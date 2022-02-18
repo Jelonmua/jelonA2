@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="stylesheets/cd.css"/>
+<head>
+  <%- include ("../partials/header.ejs") %>
+</head>
+<body>
+<div style="margin-left: 10px;">
+<h1>Rectangles</h1>
+<table border = '1'>  
+    <th>ID</th> 
+    <th>name</th>
+    <th>width</th>
+    <th>height</th>
+    <th>color</th> 
+    <% results.forEach(function(r) { %> 
+        <form action="/detail" method="get">
+            <tr>
+                <td><%= r.id %></td>
+                <td><a href="/name/<%= r.id %>"method="get"><%= r.name %></a></td>
+                <td><%= r.width %></td>
+                <td><%= r.height %></td>
+                <td><%= r.color %></td>
+            </tr>
+        </form>
+    <% }); %>
+</table>
+</div>
+<div style="margin-left: 10px;">
+<h1>Add your rectangle:</h1>
+    <form action="/add" method="post">
+        <label for="name">name</label>
+        <input type="text" name="name"/> 
+        <br/>
+        <label for="width">width</label>
+        <input type="text" name="width"/>
+        <br/>
+        <label for="height">height</label>
+        <input type="text" name="height"/>
+        <br/>
+        <label for="color">color</label>
+        <input type="text" name="color"/>
+
+        <input type="submit" name="submit" value="submit"/>
+    </form>
+</div>
+<div style="margin-left: 10px;">
+<h1>Delete your rectangle:</h1>
+    <form action="/delete" method="post">
+        <label for="id">id</label>
+        <input type="text" name="id"/>
+        <input type="submit" name="submit" value="submit"/>
+    </form>
+</div>
+
+</body>
+</html>
